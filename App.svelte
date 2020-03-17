@@ -1,11 +1,17 @@
 <script>
-	import Nested from './Nested.svelte';
-	let name = 'evil overlord';
-	let value=name
-	$:name=value
+	import {count} from './store.js';
+	import Incrementer from './Incrementer.svelte';
+	import Decrementer from './Decrementer.svelte';
+	import Resetter from './Resetter.svelte';
+	let count_value;
+
+	const unsubscribe= count.subscribe(value => {
+		count_value=value;
+	});
 
 </script>
-<Nested lord={name}/>
-Do you wish to change your name dear Mr {name.toUpperCase()}?
-<textarea bind:value></textarea>
 
+<h1>The count is {count_value}</h1>
+<Incrementer/> 
+<Decrementer/>
+<Resetter/>
