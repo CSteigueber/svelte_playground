@@ -1,9 +1,9 @@
 <script>
 	import {count} from './store.js';
+	import {time, elapsed} from './readableStore.js';
 	import Incrementer from './Incrementer.svelte';
 	import Decrementer from './Decrementer.svelte';
 	import Resetter from './Resetter.svelte';
-	import {time} from './readableStore.js';
 
 	const formatter = new Intl.DateTimeFormat('en',{
 		hour12: true,
@@ -20,3 +20,4 @@
 <Decrementer/>
 <Resetter/>
 <h2>The time is {formatter.format($time)}</h2>
+<h3>This page has been open for {$elapsed} {$elapsed===1?'second':'seconds'} </h3>
