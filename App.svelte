@@ -3,6 +3,14 @@
 	import Incrementer from './Incrementer.svelte';
 	import Decrementer from './Decrementer.svelte';
 	import Resetter from './Resetter.svelte';
+	import {time} from './readableStore.js';
+
+	const formatter = new Intl.DateTimeFormat('en',{
+		hour12: true,
+		hour: 'numeric',
+		minute:'2-digit',
+		second: '2-digit'
+	});
 
 
 </script>
@@ -11,3 +19,4 @@
 <Incrementer/> 
 <Decrementer/>
 <Resetter/>
+<h2>The time is {formatter.format($time)}</h2>
